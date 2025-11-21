@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Movie App</title>
+  </head>
+
+  <body>
+
+    <!-- Header -->
+    <header class="py-4 text-center">
+      <h1 class="display-5">
+        🎬 Movie App 🎞️
+      </h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+
+      <!-- Main Form -->
+      <section aria-label="Movie Form" class="mb-5">
+        <form id="movie-form" class="row g-3 justify-content-center" autocomplete="off">
+
+          <div class="col-12 col-md-6">
+            <label for="movieID" class="form-label">Movie ID</label>
+            <input id="movieID" type="text" class="form-control" placeholder="Enter Movie ID" />
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label for="movieTitle" class="form-label">Movie Title</label>
+            <input id="movieTitle" type="text" class="form-control" placeholder="Enter Movie Title" />
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label for="movieYear" class="form-label">Movie Year</label>
+            <input id="movieYear" type="text" class="form-control" placeholder="Enter Movie Year" />
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label for="movieRating" class="form-label">Movie Rating</label>
+            <input id="movieRating" type="text" class="form-control" placeholder="Enter Movie Rating" />
+          </div>
+
+          <div class="col-12 text-center mt-3">
+            <button type="submit" class="btn btn-success px-4">
+              Add to List
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- Search and additional features -->
+      <section aria-label="Search and Sorting Controls" class="mb-4">
+        <div class="row align-items-center g-3">
+
+          <div class="col-12 col-md-4">
+            <input
+              id="searchBox"
+              type="text"
+              class="form-control"
+              placeholder="Search by ID or Title..."
+            />
+          </div>
+
+          <div class="col-12 col-md-8 text-md-start text-center">
+            <button id="refreshBtn" class="btn btn-secondary me-2">Refresh</button>
+             <button id="sortRateHigh" class="btn btn-warning btn-sm">BestMovies</button>
+            <button id="sortAZ" class="btn btn-info btn-sm">Title A-Z</button>
+            <button id="sortZA" class="btn btn-info btn-sm">Title Z-A</button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Movie list -->
+      <section aria-label="Movie List Table">
+        <div class="table-responsive">
+          <table class="table table-striped table-dark align-middle">
+            <thead>
+              <tr>
+                <th>Movie ID</th>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Rating</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="movie-list"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="text-center py-3 text-secondary">
+      <small>© 2025 Movie App</small>
+    </footer>
+
+    <script src="./movie.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
