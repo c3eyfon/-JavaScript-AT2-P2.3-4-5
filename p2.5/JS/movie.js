@@ -102,29 +102,22 @@ class MovieList {
 
     // Search method
 
-search(searchString) {
-    const searchInput = searchString.toLowerCase();
+searchById(idString) {
     const filteredList = [];
 
     for (let movie of this.movieList) {
-        const idMatch = movie.id.toString().includes(searchInput);
-        const titleMatch = movie.title.toLowerCase().includes(searchInput);
-
-        if (idMatch || titleMatch) {
+        const idMatch = movie.id.toString().includes(idString);
+        if (idMatch) {
             filteredList.push(movie);
         }
     }
 
-    showAlert(`${filteredList.length} result(s) found`, 
-        filteredList.length > 0 ? "success" : "danger"
-    );
-
     this.removeElements();
-
     for (let i = 0; i < filteredList.length; i++) {
-        const movie = filteredList[i];
-        this.movieRow(i, movie);
+        this.movieRow(i, filteredList[i]);
     }
+
+    return filteredList.length;
 }
 
 }

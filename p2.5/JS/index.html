@@ -12,39 +12,59 @@
   </head>
 
   <body>
-
     <!-- Header -->
     <header class="py-4 text-center">
-      <h1 class="display-5">
-        🎬 Movie App 🎞️
-      </h1>
+      <h1 class="display-5">🎬 Movie App 🎞️</h1>
     </header>
 
     <!-- Main Content -->
     <main class="container my-5">
-
       <!-- Main Form -->
       <section aria-label="Movie Form" class="mb-5">
-        <form id="movie-form" class="row g-3 justify-content-center" autocomplete="off">
-
+        <h5 class="mb-3 fs-4 fw-bold">Add To Movie List</h5>
+        <form
+          id="movie-form"
+          class="row g-3 justify-content-center"
+          autocomplete="off"
+        >
           <div class="col-12 col-md-6">
             <label for="movieID" class="form-label">Movie ID</label>
-            <input id="movieID" type="text" class="form-control" placeholder="Enter Movie ID" />
+            <input
+              id="movieID"
+              type="text"
+              class="form-control"
+              placeholder="Enter Movie ID"
+            />
           </div>
 
           <div class="col-12 col-md-6">
             <label for="movieTitle" class="form-label">Movie Title</label>
-            <input id="movieTitle" type="text" class="form-control" placeholder="Enter Movie Title" />
+            <input
+              id="movieTitle"
+              type="text"
+              class="form-control"
+              placeholder="Enter Movie Title"
+            />
           </div>
 
           <div class="col-12 col-md-6">
             <label for="movieYear" class="form-label">Movie Year</label>
-            <input id="movieYear" type="text" class="form-control" placeholder="Enter Movie Year" />
+            <input
+              id="movieYear"
+              type="text"
+              class="form-control"
+              placeholder="Enter Movie Year"
+            />
           </div>
 
           <div class="col-12 col-md-6">
             <label for="movieRating" class="form-label">Movie Rating</label>
-            <input id="movieRating" type="text" class="form-control" placeholder="Enter Movie Rating" />
+            <input
+              id="movieRating"
+              type="text"
+              class="form-control"
+              placeholder="Enter Movie Rating"
+            />
           </div>
 
           <div class="col-12 text-center mt-3">
@@ -52,30 +72,34 @@
               Add to List
             </button>
           </div>
-
         </form>
       </section>
 
       <!-- Search and additional features -->
-      <section aria-label="Search and Sorting Controls" class="mb-4">
-        <div class="row align-items-center g-3">
+      <section aria-label="Search and Sorting Controls" class="row justify-content-start mb-4">
+        <div class="col-12 col-md-6">
+        <form id="searchIdForm" class="d-flex gap-2">
+          <input
+            id="searchById"
+            type="text"
+            class="form-control"
+            placeholder="Search by Movie ID..."
+          />
+          <button type="submit" class="btn btn-dark px-4">
+            Search
+          </button>
+        </form>
 
-          <div class="col-12 col-md-4">
-            <input
-              id="searchBox"
-              type="text"
-              class="form-control"
-              placeholder="Search by ID or Title..."
-            />
-          </div>
-
-          <div class="col-12 col-md-8 text-md-start text-center">
-            <button id="refreshBtn" class="btn btn-secondary me-2">Refresh</button>
-             <button id="sortRateHigh" class="btn btn-warning btn-sm">BestMovies</button>
+          <div class="col-12 col-md-8 text-md-start text-center mt-3 py-1">
+            <button id="refreshBtn" class="btn btn-secondary me-2">
+              Refresh
+            </button>
+            <button id="sortRateHigh" class="btn btn-warning btn-sm">
+              BestMovies
+            </button>
             <button id="sortAZ" class="btn btn-info btn-sm">Title A-Z</button>
             <button id="sortZA" class="btn btn-info btn-sm">Title Z-A</button>
           </div>
-
         </div>
       </section>
 
@@ -96,7 +120,6 @@
           </table>
         </div>
       </section>
-
     </main>
 
     <footer class="text-center py-3 text-secondary">

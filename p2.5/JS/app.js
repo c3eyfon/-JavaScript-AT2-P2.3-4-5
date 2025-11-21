@@ -79,14 +79,20 @@ document.querySelector("#sortZA").addEventListener("click", () => movieList.sort
 document.querySelector("#sortRateHigh").addEventListener("click", () => movieList.sortRatingHighLow());
 
 // Search button
-document.querySelector("#searchBox").addEventListener("input", (evt) => {
-    const value = evt.target.value.trim();
+
+document.getElementById("searchIdForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const value = document.getElementById("searchById").value.trim();
 
     if (value === "") {
-        movieList.refresh();
-    } else {
-        movieList.search(value);
+        showAlert("Please enter a Movie ID", "warning");
+        return;
     }
+
+    const count = movieList.searchById(value);
+
+    showAlert(`${count} result(s) found`, count > 0 ? "success" : "danger");
 });
 
 // Refresh button
