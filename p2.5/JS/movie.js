@@ -1,23 +1,23 @@
 class MovieList {
-    constructor(rootId, movieArray) {
-        this.rootId = rootId;
-        this.movieList = movieArray;
-        this.refresh();
-    }
+  constructor(rootId, movieArray) {
+    this.rootId = rootId;
+    this.movieList = movieArray;
+    this.refresh();
+  }
 
-    // remove all table rows
-    removeElements() {
-        const root = document.getElementById(this.rootId);
-        root.innerHTML = "";
-    }
+  // remove all table rows
+  removeElements() {
+    const root = document.getElementById(this.rootId);
+    root.innerHTML = "";
+  }
 
-    // generate new row
-    movieRow(index, movie) {
-        const root = document.getElementById(this.rootId);
+  // generate new row
+  movieRow(index, movie) {
+    const root = document.getElementById(this.rootId);
 
-        const tr = document.createElement("tr");
+    const tr = document.createElement("tr");
 
-        tr.innerHTML = `
+    tr.innerHTML = `
             <td>${movie.id}</td>
             <td>${movie.title}</td>
             <td>${movie.year}</td>
@@ -28,91 +28,112 @@ class MovieList {
             </td>
         `;
 
-        root.appendChild(tr);
+    root.appendChild(tr);
+  }
+
+  // generate new list
+  genMovieList() {
+    this.removeElements();
+
+    for (let i = 0; i < this.movieList.length; i++) {
+      this.movieRow(i, this.movieList[i]);
     }
+  }
 
-    // generate new list
-    genMovieList() {
-        this.removeElements();
+  // refresh
+  refresh() {
+    this.genMovieList();
+  }
 
-        for (let i = 0; i < this.movieList.length; i++) {
-            this.movieRow(i, this.movieList[i]);
-        }
-    }
+  // add new movie
 
-    // refresh
-    refresh() {
-        this.genMovieList();
-    }
-    
-    // add new movie
+  add(id, title, year, rating) {
+    this.movieList.push({
+      id,
+      title,
+      year,
+      rating,
+    });
 
-    add(id, title, year, rating) {
-        this.movieList.push({
-            id,
-            title,
-            year,
-            rating,
-        });
+    this.refresh();
+  }
 
-        this.refresh();
-    }
+  // update movie
 
-    // update movie
+  update(index, id, title, year, rating) {
+    this.movieList[index] = {
+      id,
+      title,
+      year,
+      rating,
+    };
 
-    update(index, id, title, year, rating) {
-        this.movieList[index] = {
-            id,
-            title,
-            year,
-            rating,
-        };
+    this.refresh();
+  }
 
-        this.refresh();
-    }
+  //
 
-    //
+  delete(index) {
+    this.movieList.splice(index, 1);
+    this.refresh();
+  }
 
-    delete(index) {
-        this.movieList.splice(index, 1);
-        this.refresh();
-    }
+  // Sorting methods
 
-    // Sorting methods
+  sortAZ() {
+    this.movieList.sort((a, b) => a.title.localeCompare(b.title));
+    this.refresh();
+  }
 
-    sortAZ() {
-        this.movieList.sort((a, b) => a.title.localeCompare(b.title));
-        this.refresh();
-    }
+  sortZA() {
+    this.movieList.sort((a, b) => b.title.localeCompare(a.title));
+    this.refresh();
+  }
 
-    sortZA() {
-        this.movieList.sort((a, b) => b.title.localeCompare(a.title));
-        this.refresh();
-    }
+  sortRatingHighLow() {
+    this.movieList.sort((a, b) => b.rating - a.rating);
+    this.refresh();
+  }
 
-    sortRatingHighLow() {
-        this.movieList.sort((a, b) => b.rating - a.rating);
-        this.refresh();
-    }
+  sortIdDsc() {
+    this.movieList.sort((a, b) => a.id - b.id);
+    this.refresh();
+  }
 
-     sortIdDsc() {
-        this.movieList.sort((a, b) => a.id - b.id);
-        this.refresh();
-    }
+  // Search method
 
-    // Search method
-
-searchById(idString) {
+  searchById(idString) {
     const filteredList = [];
 
     for (let movie of this.movieList) {
-        const idMatch = movie.id.toString().includes(idString);
-        if (idMatch) {
+      const idMatch = movie.id.toString().includes(idString);
+      if (idMatch) {
+        filteredList.push(movie);
+      }
+    }
+
+    this.removeElements();
+    for (let i = 0; i < filteredList.length; i++) {
+      this.movieRow(i, filteredList[i]);
+    }
+
+    return filteredList.length;
+  }
+
+searchByTitle(titleString) {
+    const searchInput = titleString.toLowerCase();
+    const filteredList = [];
+
+    for (let movie of this.movieList) {
+        const titleLower = movie.title.toLowerCase();
+
+        if (titleLower.includes(searchInput)) {
             filteredList.push(movie);
         }
     }
 
     this.removeElements();
+
     for (let i = 0; i < filteredList.length; i++) {
         this.movieRow(i, filteredList[i]);
     }
