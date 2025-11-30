@@ -75,20 +75,34 @@
         </form>
       </section>
 
+      <!-- Alert -->
+      <div id="alert-container"></div>
+
       <!-- Search and additional features -->
-      <section aria-label="Search and Sorting Controls" class="row justify-content-start mb-4">
+      <section
+        aria-label="Search and Sorting Controls"
+        class="row justify-content-start mb-4"
+      >
         <div class="col-12 col-md-6">
-        <form id="searchIdForm" class="d-flex gap-2">
-          <input
-            id="searchById"
-            type="text"
-            class="form-control"
-            placeholder="Search by Movie ID..."
-          />
-          <button type="submit" class="btn btn-dark px-4">
-            Search
-          </button>
-        </form>
+          <form id="searchIdForm" class="d-flex gap-2">
+            <input
+              id="searchById"
+              type="text"
+              class="form-control searchBox"
+              placeholder="Search by Movie ID..."
+            />
+            <button type="submit" class="btn btn-dark px-4">SearchID</button>
+          </form>
+
+          <form id="searchTitleForm" class="d-flex gap-2 mt-3">
+            <input
+              id="searchByTitle"
+              type="text"
+              class="form-control searchBox"
+              placeholder="Search by Movie Title..."
+            />
+            <button type="submit" class="btn btn-dark px-4">SearchTitle</button>
+          </form>
 
           <div class="col-12 col-md-8 text-md-start text-center mt-3 py-1">
             <button id="refreshBtn" class="btn btn-secondary me-2">
